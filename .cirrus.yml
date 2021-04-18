@@ -7,16 +7,7 @@ env: # Environt variable to pass to all tasks
 
 task:
     name: ItsVixano
-    timeout_in: 120m
     container:
       image: apon77/aosp:latest
-      cpu: 16
-      memory: 24G
     download_ccache_background_script:
-      - ./download_ccache
-    sync_script:
-      - ./sync
-    build_script:
-      - ./build
-    upload_ccache_script:
-      - ./upload_ccache
+      - echo hi :)
