@@ -1,28 +1,28 @@
 #!/bin/bash
 
-MANIFEST=git://github.com/RevengeOS/android_manifest.git
-BRANCH=r11.0
+MANIFEST=https://github.com/Corvus-R/android_manifest.git
+BRANCH=11
 
 mkdir -p /tmp/rom
 cd /tmp/rom
 
 # Repo init command, that -device,-mips,-darwin,-notdefault part will save you more time and storage to sync, add more according to your rom and choice. Optimization is welcomed! Let's make it quit, and with depth=1 so that no unnecessary things.
 repo init --no-repo-verify --depth=1 -u "$MANIFEST" -b "$BRANCH" -g default,-device,-mips,-darwin,-notdefault
-git config --global user.name ItsVixano
-git config --global user.email vixanonew@gmail.com
+git config --global user.name yograjsingh-cmd
+git config --global user.email yograjfire18@gmail.com
 
 # Sync source with -q, no need unnecessary messages, you can remove -q if want! try with -j30 first, if fails, it will try again with -j8
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
 # Sync stuffs
-find hardware/qcom-caf/msm8996/display hardware/qcom-caf/msm8996/audio hardware/qcom-caf/msm8996/media vendor/codeaurora/telephony/ frameworks/base/ .repo/ -delete
+find prebuilts/gcc/linux-x86/aarch64/aarch64-elf prebuilts/gcc/linux-x86/arm/arm-eabi prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 .repo/ -delete
 
-git clone https://github.com/wave-project/vendor_codeaurora_telephony --depth=1 --single-branch vendor/codeaurora/telephony/
-git clone https://github.com/Jabiyeff/android_hardware_qcom_media --depth=1 --single-branch hardware/qcom-caf/msm8996/media
-git clone https://github.com/Jabiyeff/android_hardware_qcom_display --depth=1 --single-branch hardware/qcom-caf/msm8996/display
-git clone https://github.com/LineageOS/android_hardware_qcom_audio --depth=1 --single-branch -b lineage-18.1-caf-msm8996 hardware/qcom-caf/msm8996/audio
-git clone "$DONTMINDME" --depth=1 --single-branch frameworks/base/
+git clone https://github.com/yograjsingh-cmd/android_prebuilts_gcc_linux-x86_aarch64_aarch64-elf --depth=1 --single-branch -b master prebuilts/gcc/linux-x86/aarch64/aarch64-elf
+git clone https://github.com/yograjsingh-cmd/android_prebuilts_gcc_linux-x86_arm_arm-eabi --depth=1 --single-branch -b master prebuilts/gcc/linux-x86/arm/arm-eabi
+git clone https://github.com/yograjsingh-cmd/prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9 --depth=1 --single-branch -b master prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
+git clone https://github.com/yograjsingh-cmd/prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9 --depth=1 --single-branch -b master prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9
+git clone https://github.com/yograjsingh-cmd/prebuilts_gcc_linux-x86_host_x86_64-linux-glibc2.17-4.8 --depth=1 --single-branch -b master prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8
 
-git clone https://github.com/ItsVixano/android_device_xiaomi_ysl --depth=1 --single-branch -b r11.0 device/xiaomi/ysl
-git clone https://github.com/ItsVixano/android_vendor_xiaomi_ysl --depth=1 --single-branch -b r11.0 vendor/xiaomi/ysl
-git clone https://github.com/ItsVixano/android_kernel_xiaomi_ysl --depth=1 --single-branch -b eleven kernel/xiaomi/ysl
+git clone https://github.com/yograjsingh-cmd/device_asus_Z01R.git --depth=1 --single-branch -b r11.0 device/xiaomi/ysl
+git clone https://github.com/yograjsingh-cmd/vendor_asus.git --depth=1 --single-branch -b lineage-18.1 vendor/asus
+git clone https://github.com/yograjsingh-cmd/kernel_z01r.git --depth=1 --single-branch -b eleven kernel/asus/sdm845
