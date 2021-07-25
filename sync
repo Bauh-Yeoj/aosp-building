@@ -15,6 +15,7 @@ git config --global user.email yograjfire18@gmail.com
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
 # Sync stuffs
+
 find prebuilts/gcc/linux-x86/aarch64/aarch64-elf prebuilts/gcc/linux-x86/arm/arm-eabi prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8 .repo/ -delete
 
 git clone https://github.com/yograjsingh-cmd/android_prebuilts_gcc_linux-x86_aarch64_aarch64-elf --depth=1 --single-branch -b master prebuilts/gcc/linux-x86/aarch64/aarch64-elf
@@ -26,3 +27,14 @@ git clone https://github.com/yograjsingh-cmd/prebuilts_gcc_linux-x86_host_x86_64
 git clone https://github.com/yograjsingh-cmd/device_asus_Z01R.git --depth=1 --single-branch -b r11.0 device/xiaomi/ysl
 git clone https://github.com/yograjsingh-cmd/vendor_asus.git --depth=1 --single-branch -b lineage-18.1 vendor/asus
 git clone https://github.com/yograjsingh-cmd/kernel_z01r.git --depth=1 --single-branch -b eleven kernel/asus/sdm845
+
+find hardware/qcom-caf/msm8998/display hardware/qcom-caf/msm8998/audio hardware/qcom-caf/msm8998/media .repo/ -delete
+git clone https://github.com/LineageOS/android_hardware_qcom_display --single-branch -b lineage-18.1-caf-msm8998 hardware/qcom-caf/msm8998/display --depth=1
+git clone https://github.com/LineageOS/android_hardware_qcom_audio --single-branch -b lineage-18.1-caf-msm8998 hardware/qcom-caf/msm8998/audio --depth=1
+git clone https://github.com/LineageOS/android_hardware_qcom_media --single-branch -b lineage-18.1-caf-msm8998 hardware/qcom-caf/msm8998/media --depth=1
+
+git clone https://github.com/ItsVixano/android_device_xiaomi_whyred --single-branch -b eleven device/xiaomi/whyred --depth=1
+git clone https://github.com/ItsVixano/android_vendor_xiaomi_whyred --single-branch -b eleven vendor/xiaomi/whyred --depth=1
+git clone https://github.com/SreekanthPalakurthi/kranul --single-branch -b eas kernel/xiaomi/whyred --depth=1
+
+
