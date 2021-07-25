@@ -36,9 +36,9 @@ make_metalava(){
 }
 
 make_rom(){
-	tg_post_msg "<b>RevengeOS CI Build Triggered for ysl</b>" "$CHATID"
+	tg_post_msg "<b>Corvus-R CI Build Triggered for Z01R</b>" "$CHATID"
 	mka bacon -j16
-	url=$(up out/target/product/ysl/*zip)
+	url=$(up out/target/product/Z01R/*zip)
 	echo " "
 	echo "$url"
 	tg_post_msg "<b>Build Completed</b>%0A%0A<b>Link : </b> <code>"$url"</code>" "$CHATID"
